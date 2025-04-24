@@ -1,6 +1,6 @@
 # VSA 10 API Tool
 
-This tool provides a set of Python scripts to interact with the VSA 10 API. It allows you to automate various tasks, such as retrieving device information, managing groups, and running automation workflows.
+This tool provides a set of Python scripts to interact with the VSA 10 API. It allows you to execute various tasks, such as retrieving device information, managing groups, and running automation workflows. It is primarily meant to allow you to conveniently explore the VSA 10 API without the need of setting up Postman or overcomplicating things.
 
 ## Prerequisites
 
