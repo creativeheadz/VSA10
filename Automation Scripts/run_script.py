@@ -3,6 +3,8 @@ import json
 import sys
 import os
 
+__friendly_name__ = "Run Automation Script"
+
 # Add parent directory to path to import config
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config

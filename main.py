@@ -324,10 +324,11 @@ def display_files_menu(directory):
         py_files.sort()
 
         for i, file in enumerate(py_files, 1):
-            # Use the friendly name if available, otherwise just the filename
-            display_text = file
+            # Use only the friendly name if available, otherwise use the filename
             if friendly_names[file]:
-                display_text = f"{file} - {friendly_names[file]}"
+                display_text = friendly_names[file]
+            else:
+                display_text = file
             print_menu_item(i, display_text)
 
         # For the back option, keep consistent formatting
