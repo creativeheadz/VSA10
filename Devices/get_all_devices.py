@@ -2,7 +2,7 @@
 import slumber
 import config
 import json
-__friendly_name__ = "Get all Devices"
+__friendly_name__ = "Get All Devices"
 def get_all_devices():
     try:
         api = slumber.API(config.ENDPOINT, auth=(config.TOKEN_ID, config.TOKEN_SECRET))

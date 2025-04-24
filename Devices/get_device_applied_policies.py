@@ -2,7 +2,7 @@ import slumber
 import json
 import sys
 import os
-__friendly_name__ = "Get a list of applied policies for a specific device"
+__friendly_name__ = "Get A List Of Applied Policies For A Specific Device"
 # Add parent directory to path to import config
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config

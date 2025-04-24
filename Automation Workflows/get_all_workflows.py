@@ -4,7 +4,7 @@ import sys
 import os
 
 
-__friendly_name__ = "Get a list of All Workflows"
+__friendly_name__ = "Get A List Of All Workflows"
 
 
 # Add parent directory to path to import config

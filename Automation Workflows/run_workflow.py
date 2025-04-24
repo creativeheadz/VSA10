@@ -4,7 +4,7 @@ import sys
 import os
 import requests
 
-__friendly_name__ = "Run an existing Workflow"
+__friendly_name__ = "Run An Existing Workflow"
 
 
 # Add parent directory to path to import config

@@ -3,7 +3,7 @@ import json
 import sys
 import os
 
-__friendly_name__ = "Get All Audit Log entries"
+__friendly_name__ = "Get All Audit Log Entries"
 
 
 # Add parent directory to path to import config

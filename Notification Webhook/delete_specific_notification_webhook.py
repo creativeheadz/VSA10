@@ -7,7 +7,7 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
 
-__friendly_name__ = "Delete Specific Notification Webhook"
+__friendly_name__ = "Delete A Specific Notification Webhook"
 
 def delete_specific_notification_webhook(webhook_id=None):
     """

@@ -3,7 +3,7 @@ import json
 import sys
 import os
 
-__friendly_name__ = "Get a specific Workflow"
+__friendly_name__ = "Get A Specific Workflow"
 
 
 # Add parent directory to path to import config

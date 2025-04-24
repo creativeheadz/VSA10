@@ -260,9 +260,216 @@ def print_menu_footer(width=60):
     """Print a formatted menu footer."""
     print(f"\n{Colors.HEADER}{'─' * width}{Colors.END}")
 
+# Global variable to store environment information
+api_environment_info = None
+
+def check_connectivity():
+    """Check connectivity by running get_environment_information.py and return results."""
+    global api_environment_info
+    
+    # Look for the get_environment_information.py script in API subdirectories
+    root_path, subdirs = get_subdirectories()
+    
+    # First try to find the script in a common location - 'common' or 'system' directories
+    target_script = 'get_environment_information.py'
+    script_path = None
+    
+    # Check common locations first
+    common_dirs = ['common', 'system', 'info', 'utils', 'tools', 'environment']
+    for common_dir in common_dirs:
+        if common_dir in subdirs:
+            potential_path = os.path.join(root_path, common_dir, target_script)
+            if os.path.exists(potential_path):
+                script_path = potential_path
+                break
+    
+    # If not found in common locations, search all subdirectories
+    if not script_path:
+        for subdir in subdirs:
+            potential_path = os.path.join(root_path, subdir, target_script)
+            if os.path.exists(potential_path):
+                script_path = potential_path
+                break
+    
+    if not script_path:
+        logger.warning(f"Could not find {target_script} in any subdirectory")
+        return {
+            "connected": False,
+            "error": f"Could not find {target_script} in any subdirectory"
+        }
+    
+    logger.info(f"Found {target_script} at {script_path}")
+    
+    try:
+        # Method 1: Run the script directly as a subprocess to capture output
+        # This helps if the script prints results rather than returning them
+        try:
+            import subprocess
+            import json
+            
+            # Save current directory
+            current_dir = os.getcwd()
+            # Change to script directory to ensure relative imports work
+            script_dir = os.path.dirname(script_path)
+            os.chdir(script_dir)
+            
+            # Run the script and capture output
+            result = subprocess.run(
+                [sys.executable, os.path.basename(script_path)],
+                capture_output=True,
+                text=True,
+                check=False
+            )
+            
+            # Restore original directory
+            os.chdir(current_dir)
+            
+            # Check if output contains JSON
+            if result.returncode == 0 and result.stdout:
+                # Try to find JSON in the output
+                try:
+                    # Look for JSON-like content in the output
+                    import re
+                    json_match = re.search(r'({[\s\S]*})', result.stdout)
+                    if json_match:
+                        json_str = json_match.group(1)
+                        data = json.loads(json_str)
+                        if 'Data' in data:
+                            api_environment_info = data
+                            return {
+                                "connected": True,
+                                "customer_id": data.get('Data', {}).get('CustomerId', 'Unknown'),
+                                "customer_name": data.get('Data', {}).get('CustomerName', 'Unknown'),
+                                "product_version": data.get('Data', {}).get('ProductVersion', 'Unknown'),
+                                "full_info": data
+                            }
+                except json.JSONDecodeError:
+                    logger.debug("Could not parse JSON from subprocess output")
+                except Exception as e:
+                    logger.debug(f"Error processing subprocess output: {str(e)}")
+        except Exception as e:
+            logger.debug(f"Subprocess method failed: {str(e)}")
+        
+        # Method 2: Import and run the module (original method with enhancements)
+        # Temporarily add the script directory to sys.path for imports
+        script_dir = os.path.dirname(script_path)
+        if script_dir not in sys.path:
+            sys.path.insert(0, script_dir)
+        
+        # Import the module
+        module_name = os.path.splitext(os.path.basename(script_path))[0]
+        spec = importlib.util.spec_from_file_location(module_name, script_path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        
+        # Try more function names that might be present
+        result = None
+        function_names = ['get_environment_info', 'get_environment', 
+                          'get_environment_information', 
+                          'environment_info', 'main']
+        
+        for func_name in function_names:
+            if hasattr(module, func_name):
+                logger.info(f"Found {func_name} function in {module_name}")
+                try:
+                    func = getattr(module, func_name)
+                    result = func()
+                    if result:
+                        break
+                except Exception as e:
+                    logger.debug(f"Error calling {func_name}: {str(e)}")
+        
+        # Clean up sys.path
+        if script_dir in sys.path:
+            sys.path.remove(script_dir)
+        
+        if result and isinstance(result, dict):
+            # Check if the result has the expected structure directly
+            # or under a 'Data' key as some APIs return a wrapper object
+            if 'Data' in result:
+                api_environment_info = result
+                data_section = result['Data']
+            elif isinstance(result, dict) and any(k in result for k in ['CustomerId', 'CustomerName', 'ProductVersion']):
+                api_environment_info = {'Data': result}
+                data_section = result
+            else:
+                # Search for nested data that might contain environment info
+                data_section = None
+                for key, value in result.items():
+                    if isinstance(value, dict) and any(k in value for k in ['CustomerId', 'CustomerName', 'ProductVersion']):
+                        data_section = value
+                        api_environment_info = {'Data': value}
+                        break
+                
+                if not data_section:
+                    logger.warning(f"Could not find environment data in the result structure")
+                    return {
+                        "connected": False,
+                        "error": "Unexpected data structure in result"
+                    }
+            
+            return {
+                "connected": True,
+                "customer_id": data_section.get('CustomerId', 'Unknown'),
+                "customer_name": data_section.get('CustomerName', 'Unknown'),
+                "product_version": data_section.get('ProductVersion', 'Unknown'),
+                "full_info": api_environment_info
+            }
+        
+        # Last resort: Look at the module's globals
+        if hasattr(module, 'environment_data') or hasattr(module, 'data') or hasattr(module, 'result'):
+            potential_data = getattr(module, 'environment_data', None) or getattr(module, 'data', None) or getattr(module, 'result', None)
+            if potential_data and isinstance(potential_data, dict):
+                # Process the data like above
+                if 'Data' in potential_data:
+                    api_environment_info = potential_data
+                    data_section = potential_data['Data']
+                else:
+                    api_environment_info = {'Data': potential_data}
+                    data_section = potential_data
+                
+                return {
+                    "connected": True,
+                    "customer_id": data_section.get('CustomerId', 'Unknown'),
+                    "customer_name": data_section.get('CustomerName', 'Unknown'),
+                    "product_version": data_section.get('ProductVersion', 'Unknown'),
+                    "full_info": api_environment_info
+                }
+        
+        logger.warning(f"Could not extract environment information from {target_script}")
+        return {
+            "connected": False,
+            "error": f"Could not extract environment information"
+        }
+    
+    except Exception as e:
+        logger.error(f"Error checking connectivity: {str(e)}", exc_info=True)
+        return {
+            "connected": False,
+            "error": str(e)
+        }
+
+def display_connection_info(connection_status):
+    """Display connection information in the directory menu."""
+    if connection_status and connection_status.get("connected", False):
+        customer_id = connection_status.get("customer_id", "Unknown")
+        customer_name = connection_status.get("customer_name", "Unknown")
+        product_version = connection_status.get("product_version", "Unknown")
+        
+        print(f"\n{Colors.GREEN}✓ Connected to API: {customer_id}{Colors.END}")
+        print(f"{Colors.CYAN}Customer: {customer_name}{Colors.END}")
+        print(f"{Colors.CYAN}Version: {product_version}{Colors.END}")
+    else:
+        error = connection_status.get("error", "Unknown error") if connection_status else "Not connected"
+        print(f"\n{Colors.RED}✗ Not connected to API: {error}{Colors.END}")
+        print(f"{Colors.YELLOW}Some features may not work properly.{Colors.END}")
+
 def display_directory_menu():
     """Display a menu of subdirectories."""
     root_path, subdirs = get_subdirectories()
+    
+    # Get connection status
+    connection_status = check_connectivity()
 
     while True:
         clear_screen()
@@ -276,6 +483,10 @@ def display_directory_menu():
 
         # For the exit option, keep consistent formatting
         print_menu_item(len(subdirs) + 1, f"{Colors.YELLOW}Exit{Colors.END}", Colors.RED)
+        
+        # Display connection information before the footer
+        display_connection_info(connection_status)
+        
         print_menu_footer()
 
         try:
