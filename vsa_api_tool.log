@@ -1,0 +1,75 @@
+2025-04-24 09:33:14,647 INFO Attempting to load module: C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py
+2025-04-24 09:33:14,648 INFO Executing module: get_all_audit_logs
+2025-04-24 09:33:15,032 ERROR Error executing code in C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py: source code string cannot contain null bytes
+2025-04-24 09:33:15,032 ERROR Exception running C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py: source code string cannot contain null bytes
+Traceback (most recent call last):
+  File "C:\Users\AVT\Desktop\VSA 10\API\main.py", line 159, in load_and_run_module
+    exec(compiled_code, module.__dict__)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py", line 8, in <module>
+    import config
+SyntaxError: source code string cannot contain null bytes
+2025-04-24 09:34:25,251 INFO Attempting to load module: C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py
+2025-04-24 09:34:25,251 INFO Executing module: get_all_audit_logs
+2025-04-24 09:34:25,632 ERROR Error executing code in C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py: source code string cannot contain null bytes
+2025-04-24 09:34:25,632 ERROR Exception running C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py: source code string cannot contain null bytes
+Traceback (most recent call last):
+  File "C:\Users\AVT\Desktop\VSA 10\API\main.py", line 175, in load_and_run_module
+    exec(compiled_code, module.__dict__)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py", line 8, in <module>
+    import config
+SyntaxError: source code string cannot contain null bytes
+2025-04-24 09:37:41,493 INFO Attempting to load module: C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py
+2025-04-24 09:37:41,494 INFO Executing module: get_all_audit_logs
+2025-04-24 09:37:41,874 ERROR Error executing code in C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py: (unicode error) 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte (config.py, line 1)
+2025-04-24 09:37:41,874 ERROR Exception running C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py: (unicode error) 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte (config.py, line 1)
+Traceback (most recent call last):
+  File "C:\Users\AVT\Desktop\VSA 10\API\main.py", line 175, in load_and_run_module
+    exec(compiled_code, module.__dict__)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py", line 8, in <module>
+    import config
+  File "C:\Users\AVT\Desktop\VSA 10\API\config.py", line 1
+    \ufffd\ufffdimport os
+       ^
+SyntaxError: (unicode error) 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+2025-04-24 09:38:57,056 INFO Attempting to load module: C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py
+2025-04-24 09:38:57,057 INFO Executing module: get_all_audit_logs
+2025-04-24 09:38:57,446 ERROR Error executing code in C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py: source code string cannot contain null bytes
+2025-04-24 09:38:57,447 ERROR Exception running C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py: source code string cannot contain null bytes
+Traceback (most recent call last):
+  File "C:\Users\AVT\Desktop\VSA 10\API\main.py", line 175, in load_and_run_module
+    exec(compiled_code, module.__dict__)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py", line 8, in <module>
+    import config
+SyntaxError: source code string cannot contain null bytes
+2025-04-24 09:39:26,605 INFO Attempting to load module: C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py
+2025-04-24 09:39:26,605 INFO Executing module: get_all_audit_logs
+2025-04-24 09:39:26,980 ERROR Error executing code in C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py: source code string cannot contain null bytes
+2025-04-24 09:39:26,980 ERROR Exception running C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py: source code string cannot contain null bytes
+Traceback (most recent call last):
+  File "C:\Users\AVT\Desktop\VSA 10\API\main.py", line 175, in load_and_run_module
+    exec(compiled_code, module.__dict__)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py", line 8, in <module>
+    import config
+SyntaxError: source code string cannot contain null bytes
+2025-04-24 09:41:05,227 INFO Attempting to load module: C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py
+2025-04-24 09:41:05,227 INFO Executing module: get_all_audit_logs
+2025-04-24 09:41:05,618 ERROR Error executing code in C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py: source code string cannot contain null bytes
+2025-04-24 09:41:05,618 ERROR Exception running C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py: source code string cannot contain null bytes
+Traceback (most recent call last):
+  File "C:\Users\AVT\Desktop\VSA 10\API\main.py", line 175, in load_and_run_module
+    exec(compiled_code, module.__dict__)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py", line 8, in <module>
+    import config
+SyntaxError: source code string cannot contain null bytes
+2025-04-24 09:42:28,416 INFO Attempting to load module: C:\Users\AVT\Desktop\VSA 10\API\Audit Logs\get_all_audit_logs.py
+2025-04-24 09:42:28,416 INFO Executing module: get_all_audit_logs
+2025-04-24 09:42:28,804 INFO Found get_all_audit_logs() in get_all_audit_logs, running it.
+2025-04-24 09:42:46,944 INFO Attempting to load module: C:\Users\AVT\Desktop\VSA 10\API\Groups\get_all_groups.py
+2025-04-24 09:42:46,944 INFO Executing module: get_all_groups
+2025-04-24 09:42:46,945 INFO Found get_all_groups() in get_all_groups, running it.
