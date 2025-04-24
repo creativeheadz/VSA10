@@ -4,6 +4,9 @@ import sys
 import os
 import requests
 
+__friendly_name__ = "Run an existing Workflow"
+
+
 # Add parent directory to path to import config
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
