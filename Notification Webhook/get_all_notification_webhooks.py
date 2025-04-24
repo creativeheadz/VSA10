@@ -7,6 +7,8 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
 
+__friendly_name__ = "Get All Notification Webhooks"
+
 def get_all_notification_webhooks(top=50, skip=0):
     """
     Get a list of all notification webhooks

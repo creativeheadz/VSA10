@@ -7,6 +7,8 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
 
+__friendly_name__ = "Get Site Custom Fields"
+
 def get_site_custom_fields(site_id=None, top=50, skip=0):
     """
     Get custom fields for a specific site

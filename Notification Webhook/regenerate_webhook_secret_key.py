@@ -7,6 +7,8 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
 
+__friendly_name__ = "Regenerate Webhook Secret Key"
+
 def regenerate_webhook_secret_key(webhook_id=None):
     """
     Regenerate the secret key for a notification webhook

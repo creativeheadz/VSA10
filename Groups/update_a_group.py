@@ -7,6 +7,8 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
 
+__friendly_name__ = "Update a Group"
+
 def update_a_group(group_id=None):
     # If group_id wasn't provided as an argument, ask for it
     if group_id is None:

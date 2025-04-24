@@ -7,6 +7,8 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
 
+__friendly_name__ = "Update a Site"
+
 def update_a_site(site_id=None, name=None, contact_info=None):
     """
     Update an existing site

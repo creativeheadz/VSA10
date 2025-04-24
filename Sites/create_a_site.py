@@ -3,12 +3,11 @@ import json
 import sys
 import os
 
-# Define a friendly name for this script
-__friendly_name__ = "Create a new site in the system"
-
 # Add parent directory to path to import config
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
+
+__friendly_name__ = "Create a Site"
 
 def create_a_site(name=None, parent_id=None, contact_info=None):
     """

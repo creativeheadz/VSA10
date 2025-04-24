@@ -7,6 +7,8 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
 
+__friendly_name__ = "Get Patch Management Policy"
+
 def get_patch_management_policy(policy_id=None):
     # If policy_id wasn't provided as an argument, ask for it
     if policy_id is None:

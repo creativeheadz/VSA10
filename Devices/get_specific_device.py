@@ -1,7 +1,7 @@
 import slumber
 import config
 import json
-
+__friendly_name__ = "Get a Specific Device"
 def get_specific_device(device_id):
     try:
         api = slumber.API(config.ENDPOINT, auth=(config.TOKEN_ID, config.TOKEN_SECRET))

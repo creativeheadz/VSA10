@@ -7,6 +7,8 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
 
+__friendly_name__ = "Create a Group"
+
 def get_user_input(prompt, default=None):
     """Get user input with an optional default value."""
     if default:

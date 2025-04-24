@@ -7,6 +7,8 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
 
+__friendly_name__ = "Create an Organisation"
+
 def create_an_organisation(name=None):
     """
     Create a new organisation

@@ -7,6 +7,8 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
 
+__friendly_name__ = "Get a Specific Organisation"
+
 def get_a_specific_organisation(organisation_id=None):
     """
     Get details for a specific organisation

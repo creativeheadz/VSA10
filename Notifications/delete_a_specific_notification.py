@@ -7,6 +7,8 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
 
+__friendly_name__ = "Delete a Specific Notification"
+
 def delete_a_specific_notification(notification_id=None):
     """
     Delete a specific notification

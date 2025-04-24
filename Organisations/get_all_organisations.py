@@ -7,6 +7,8 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
 
+__friendly_name__ = "Get All Organisations"
+
 def get_all_organisations(top=50, skip=0):
     """
     Get a list of all organisations

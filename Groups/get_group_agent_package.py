@@ -7,6 +7,8 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
 
+__friendly_name__ = "Get Group Agent Package"
+
 def get_group_agent_package(group_id=None):
     # If group_id wasn't provided as an argument, ask for it
     if group_id is None:

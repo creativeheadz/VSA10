@@ -7,6 +7,8 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
 
+__friendly_name__ = "Send a Notification"
+
 def notify(instance_id=None, title=None, message=None, priority=None):
     """
     Send a notification through the API

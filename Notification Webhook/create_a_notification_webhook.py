@@ -7,6 +7,8 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
 
+__friendly_name__ = "Create a Notification Webhook"
+
 def create_a_notification_webhook(name=None, description=None, priorities=None, 
                                  organization_ids=None, headers=None, url=None, 
                                  language=None):

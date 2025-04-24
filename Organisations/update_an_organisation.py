@@ -7,6 +7,8 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
 
+__friendly_name__ = "Update an Organisation"
+
 def update_an_organisation(organisation_id=None, name=None):
     """
     Update an existing organisation
