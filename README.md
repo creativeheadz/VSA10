@@ -65,29 +65,50 @@ The script will:
 When you run `main.py`, you'll see something like:
 
 ```
-VSA 10 API Tool Navigator
-------------------------
-Available options:
-1. devices (folder)
-2. groups (folder)
-3. workflows (folder)
-4. get_all_devices
-5. list_functions
+════════════════════════════════════════════════════════════
+               VSAx API Tool - Directory Menu
+════════════════════════════════════════════════════════════
 
-Enter a number to select (0 to go back, q to quit): 
+[01] Audit Logs
+[02] Automation Scripts
+[03] Automation Tasks
+[04] Automation Workflows
+[05] Custom Fields
+[06] Device Assets
+[07] Devices
+[08] Endpoint Protection
+[09] Environment
+[10] Groups
+[11] Notification Webhook
+[12] Notifications
+[13] Organisations
+[14] Patch Management
+[15] Scopes
+[16] Sites
+[17] Exit
+
+✓ Connected to API: oldforge.vsax.net
+Customer: Andrei Trimbitas / oldforge
+Version: 10.17.0 build 4800 release 353, US
+
+────────────────────────────────────────────────────────────
+Enter your choice:
 ```
 
-Selecting option `1` would navigate into the devices folder:
+Selecting option `01` would navigate into the Audit Logs folder:
 
 ```
-Current location: devices/
-------------------------
-Available options:
-1. get_device_info
-2. update_device
-3. delete_device
+════════════════════════════════════════════════════════════
+                  Scripts in 'Audit Logs'
+════════════════════════════════════════════════════════════
 
-Enter a number to select (0 to go back, q to quit): 
+[01] Get All Audit Log Entries
+[02] Back to Directory Menu
+
+────────────────────────────────────────────────────────────
+Enter your choice:
+
+
 ```
 
 ### Executing Functions
