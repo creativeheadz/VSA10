@@ -73,3 +73,21 @@ SyntaxError: source code string cannot contain null bytes
 2025-04-24 09:42:46,944 INFO Attempting to load module: C:\Users\AVT\Desktop\VSA 10\API\Groups\get_all_groups.py
 2025-04-24 09:42:46,944 INFO Executing module: get_all_groups
 2025-04-24 09:42:46,945 INFO Found get_all_groups() in get_all_groups, running it.
+2025-04-24 10:26:55,070 INFO Attempting to load module: C:\Users\AVT\Desktop\VSA 10\API\Automation Scripts\run_script.py
+2025-04-24 10:26:55,081 INFO Executing module: run_script
+2025-04-24 10:26:55,474 INFO Found run_script() in run_script, running it.
+2025-04-24 10:29:44,201 INFO Attempting to load module: C:\Users\AVT\Desktop\VSA 10\API\Automation Scripts\get_script_executions.py
+2025-04-24 10:29:44,214 INFO Executing module: get_script_executions
+2025-04-24 10:29:44,215 INFO Found get_script_executions() in get_script_executions, running it.
+2025-04-24 10:31:51,026 INFO Attempting to load module: C:\Users\AVT\Desktop\VSA 10\API\Automation Scripts\get_all_scripts.py
+2025-04-24 10:31:51,038 INFO Executing module: get_all_scripts
+2025-04-24 10:31:51,039 INFO Found get_all_scripts() in get_all_scripts, running it.
+2025-04-24 10:49:56,289 INFO Attempting to load module: C:\Users\AVT\Desktop\VSA 10\API\Notification Webhook\get_all_notification_webhooks.py
+2025-04-24 10:49:56,301 INFO Executing module: get_all_notification_webhooks
+2025-04-24 10:49:56,302 INFO Found get_all_notification_webhooks() in get_all_notification_webhooks, running it.
+2025-04-24 10:54:00,688 INFO Attempting to load module: C:\Users\AVT\Desktop\VSA 10\API\Organisations\get_all_organisations.py
+2025-04-24 10:54:00,698 INFO Executing module: get_all_organisations
+2025-04-24 10:54:00,699 INFO Found get_all_organisations() in get_all_organisations, running it.
+2025-04-24 11:01:35,925 INFO Attempting to load module: C:\Users\AVT\Desktop\VSA 10\API\Sites\get_all_sites.py
+2025-04-24 11:01:35,937 INFO Executing module: get_all_sites
+2025-04-24 11:01:35,937 INFO Found get_all_sites() in get_all_sites, running it.

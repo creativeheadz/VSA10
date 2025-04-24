@@ -62,6 +62,28 @@ def get_python_files(directory):
         print(f"Error getting Python files: {str(e)}")
         return []
 
+def get_script_friendly_name(file_path):
+    """Extract friendly name from a Python script if available."""
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            for line in f:
+                if line.strip().startswith('__friendly_name__'):
+                    # Extract the string value after the assignment
+                    parts = line.split('=', 1)
+                    if len(parts) == 2:
+                        # Remove quotes and strip whitespace
+                        friendly_name = parts[1].strip()
+                        # Remove single or double quotes if present
+                        if (friendly_name.startswith('"') and friendly_name.endswith('"')) or \
+                           (friendly_name.startswith("'") and friendly_name.endswith("'")):
+                            friendly_name = friendly_name[1:-1]
+                        return friendly_name
+    except Exception as e:
+        logger.warning(f"Failed to extract friendly name from {file_path}: {e}")
+    
+    # Return None if no friendly name found
+    return None
+
 def load_and_run_module(file_path):
     """Load and run a Python module from the given path, handling null bytes."""
     module_name = os.path.splitext(os.path.basename(file_path))[0]
@@ -285,6 +307,13 @@ def display_directory_menu():
 def display_files_menu(directory):
     """Display a menu of Python files in the directory."""
     py_files = get_python_files(directory)
+    friendly_names = {}
+    
+    # Pre-fetch friendly names for each file
+    for file in py_files:
+        file_path = os.path.join(directory, file)
+        friendly_name = get_script_friendly_name(file_path)
+        friendly_names[file] = friendly_name
 
     while True:
         clear_screen()
@@ -295,7 +324,11 @@ def display_files_menu(directory):
         py_files.sort()
 
         for i, file in enumerate(py_files, 1):
-            print_menu_item(i, file)
+            # Use the friendly name if available, otherwise just the filename
+            display_text = file
+            if friendly_names[file]:
+                display_text = f"{file} - {friendly_names[file]}"
+            print_menu_item(i, display_text)
 
         # For the back option, keep consistent formatting
         print_menu_item(len(py_files) + 1, f"{Colors.YELLOW}Back to Directory Menu{Colors.END}", Colors.CYAN)

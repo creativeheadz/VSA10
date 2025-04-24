@@ -39,19 +39,75 @@ This tool provides a set of Python scripts to interact with the VSA 10 API. It a
 
 ## Usage
 
-The tool consists of several Python scripts, each designed to perform a specific task. You can run these scripts from the command line:
+The tool features an interactive navigation system through `main.py` that makes it easy to discover and execute available functions:
+
+### Interactive Navigation
+
+Run the main script to start the interactive navigator:
 
 ```bash
-python main.py <script_name> [arguments]
+python main.py
 ```
 
-For example, to get all devices, you would run:
+The script will:
+1. Scan the project directory for available functions and subfolders
+2. Present them as numbered options in a menu interface
+3. Allow you to navigate and execute functions using number keys
+
+### Navigation Controls
+
+* Enter the corresponding number to select a folder or function
+* Press `0` or `b` to go back to the previous level
+* Press `q` to quit the application
+
+### Example Navigation Flow
+
+When you run `main.py`, you'll see something like:
+
+```
+VSA 10 API Tool Navigator
+------------------------
+Available options:
+1. devices (folder)
+2. groups (folder)
+3. workflows (folder)
+4. get_all_devices
+5. list_functions
+
+Enter a number to select (0 to go back, q to quit): 
+```
+
+Selecting option `1` would navigate into the devices folder:
+
+```
+Current location: devices/
+------------------------
+Available options:
+1. get_device_info
+2. update_device
+3. delete_device
+
+Enter a number to select (0 to go back, q to quit): 
+```
+
+### Executing Functions
+
+When you select a function, the script will:
+1. Execute the function directly if it requires no arguments
+2. Prompt you for any required arguments
+3. Display the results
+4. Return to the navigation menu
+
+For direct command-line execution of a specific function:
 
 ```bash
-python main.py get_all_devices
+python main.py <full_path_to_function> [arguments]
 ```
 
-Refer to the individual script documentation for specific usage instructions and available arguments.
+For example:
+```bash
+python main.py devices/get_device_info ABC123
+```
 
 ## Contributing
 

@@ -7,33 +7,33 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
 
-def get_a_specific_task(task_id=None):
+def get_a_specific_site(site_id=None):
     """
-    Get details for a specific automation task
+    Get details for a specific site
     
     Args:
-        task_id (str): The ID of the task to retrieve
+        site_id (str): The ID of the site to retrieve
         
     Returns:
-        dict: The API response containing task details
+        dict: The API response containing site details
     """
-    # If task_id wasn't provided as an argument, ask for it
-    if task_id is None:
-        task_id = input("Enter task ID: ")
+    # If site_id wasn't provided as an argument, ask for it
+    if site_id is None:
+        site_id = input("Enter site ID: ")
     
     try:
         api = slumber.API(config.ENDPOINT, auth=(config.TOKEN_ID, config.TOKEN_SECRET))
-        result = api.automation.tasks(task_id).get()
+        result = api.sites(site_id).get()
         
-        print("\nTask details:")
+        print("\nSite details:")
         print(json.dumps(result, indent=4))
         
         return result
         
     except Exception as e:
-        print('\nGetTask raised an exception:')
+        print('\nGetSite raised an exception:')
         print(str(e))
         return None
 
 if __name__ == "__main__":
-    get_a_specific_task()
+    get_a_specific_site()
