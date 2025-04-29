@@ -30,7 +30,7 @@ This tool provides a set of Python scripts to interact with the VSA 10 API. It a
 2.  Add the following variables to the `.env` file, replacing the placeholders with your actual API credentials:
 
     ```properties
-    ENDPOINT=https://oldforge.vsax.net/api/v3/
+    ENDPOINT=https://<yourinstancename>.vsax.net/api/v3/
     TOKEN_ID=your_token_id
     TOKEN_SECRET=your_token_secret
     ```
@@ -87,8 +87,8 @@ When you run `main.py`, you'll see something like:
 [16] Sites
 [17] Exit
 
-✓ Connected to API: oldforge.vsax.net
-Customer: Andrei Trimbitas / oldforge
+✓ Connected to API: instancename.vsax.net
+Customer: Andrei Trimbitas / company
 Version: 10.17.0 build 4800 release 353, US
 
 ────────────────────────────────────────────────────────────
